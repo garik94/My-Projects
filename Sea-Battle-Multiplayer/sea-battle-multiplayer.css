@@ -1,0 +1,130 @@
+body{
+	background-color: #000;
+    position: relative;
+    height: 95vh;
+    display: flex;
+    justify-content: space-around;
+    width: 1500px;
+    align-items: center;
+}
+
+div#board{
+	position: relative;
+	order: 1;
+    width: 1024px;
+    height: 600px;
+    /* margin: auto; */
+    display: flex;
+    /* background: url(images/board.jpg) no-repeat; */
+    
+    border: 5px solid green;
+}
+
+div.info{
+	display: flex;
+	justify-content:center;
+	flex-direction: column;
+	color: rgb(83,175,79);
+	font-size: 30px;
+	text-align: center;
+
+}
+
+div#userInfo{
+	order: 0;
+	flex: 1;
+	height: 600px;
+}
+
+div#computerInfo{
+	order: 2;
+	flex: 1;
+	height: 600px;
+}
+
+div.info h4{
+	font-size: 25px;
+	justify-content: center;
+}
+
+
+
+div.field {
+	flex: 1;
+	width: 497px;
+    /*border: 5px solid green;*/
+    background: url(images/board.jpg) no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+}
+/*
+#userField{
+	margin-right: 15px;
+}
+
+#computerField{
+	margin-left: 15px;
+}
+*/
+
+div#messageArea{
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	color: rgb(83,175,79);
+	font-size: 30px;
+}
+
+
+table{
+    position: absolute;
+    top: 133.5px;
+    left: 86px;
+    border-spacing: 1px;
+}
+
+td{
+	width: 45px;
+	height: 46px;
+	
+}
+
+form{
+	position: absolute;
+	bottom: 10px;
+	right: 50%;
+	transform: translateX(50%);
+	padding: 15px;
+	background-color: rgb(83,175,19);
+}
+
+form input{
+	background-color: rgb(152,207,113);
+	border-color: rgb(83,175,19);
+	font-size: 1em;
+}
+
+.hit{
+	background-image: url(images/Ship-Hitted.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.miss{
+	background-image: url(images/miss.png);	
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.locate{
+	background-image: url(images/ship.png);	
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Battleship</title>
+	<link rel="stylesheet" type="text/css" href="sea-battle-multiplayer.css">
+	<script type="text/javascript" src="sea-battle-multiplayer.js"></script>
+</head>
+<body>
+	<div id="userInfo" class="info">
+		<h3>USER</h3>
+		<h4>SHIPS' COUNT: 6</h4>
+		<h4>SUNK SHIPS: 0 </h4></div>
+	<div id="computerInfo" class="info">
+		<h3>COMPUTER</h3>
+		<h4>SHIPS' COUNT: 6</h4>
+		<h4>SUNK SHIPS: 0</h4></div>
+	<div id="board">
+		<div id="messageArea" ></div>
+		<div id="userField" class="field">
+			<table id="user">
+			<tr>
+				<td id="u00"></td><td id="u01"></td><td id="u02"></td><td id="u03"></td><td id="u04"></td><td id="u05"></td><td id="u06"></td>
+			</tr>
+				
+			<tr>
+				<td id="u10"></td><td id="u11"></td><td id="u12"></td><td id="u13"></td><td id="u14"></td><td id="u15"></td><td id="u16"></td>
+			</tr>
+
+			<tr>
+				<td id="u20"></td><td id="u21"></td><td id="u22"></td><td id="u23"></td><td id="u24"></td><td id="u25"></td><td id="u26"></td>
+			</tr>
+
+			<tr>
+				<td id="u30"></td><td id="u31"></td><td id="u32"></td><td id="u33"></td><td id="u34"></td><td id="u35"></td><td id="u36"></td>
+			</tr>
+
+			<tr>
+				<td id="u40"></td><td id="u41"></td><td id="u42"></td><td id="u43"></td><td id="u44"></td><td id="u45"></td><td id="u46"></td>
+			</tr>
+
+			<tr>
+				<td id="u50"></td><td id="u51"></td><td id="u52"></td><td id="u53"></td><td id="u54"></td><td id="u55"></td><td id="u56"></td>
+			</tr>
+
+			<tr>
+				<td id="u60"></td><td id="u61"></td><td id="u62"></td><td id="u63"></td><td id="u64"></td><td id="u65"></td><td id="u66"></td>
+			</tr>
+		</table>
+		</div>
+		<div id="computerField" class="field">
+			<table id="computer">
+			<tr>
+				<td id="00"></td><td id="01"></td><td id="02"></td><td id="03"></td><td id="04"></td><td id="05"></td><td id="06"></td>
+			</tr>
+				
+			<tr>
+				<td id="10"></td><td id="11"></td><td id="12"></td><td id="13"></td><td id="14"></td><td id="15"></td><td id="16"></td>
+			</tr>
+
+			<tr>
+				<td id="20"></td><td id="21"></td><td id="22"></td><td id="23"></td><td id="24"></td><td id="25"></td><td id="26"></td>
+			</tr>
+
+			<tr>
+				<td id="30"></td><td id="31"></td><td id="32"></td><td id="33"></td><td id="34"></td><td id="35"></td><td id="36"></td>
+			</tr>
+
+			<tr>
+				<td id="40"></td><td id="41"></td><td id="42"></td><td id="43"></td><td id="44"></td><td id="45"></td><td id="46"></td>
+			</tr>
+
+			<tr>
+				<td id="50"></td><td id="51"></td><td id="52"></td><td id="53"></td><td id="54"></td><td id="55"></td><td id="56"></td>
+			</tr>
+
+			<tr>
+				<td id="60"></td><td id="61"></td><td id="62"></td><td id="63"></td><td id="64"></td><td id="65"></td><td id="66"></td>
+			</tr>
+		</table>
+		</div>
+		
+		<form>
+			<input type="text" id="guessInput" placeholder="A0">
+			<input type="button" id="fireButton" value= "Fire!">
+		</form>
+	</div>
+
+</body>
+</html>
