@@ -64,8 +64,6 @@ function Game(){
 		this.shipLength = shipLength;
 		this.isSunkCurentShip = false;
 		this.win_loose = "loose";
-		//this.curentShip ="";
-		//this.isSunkAnotherShip=false;
 	}
 
 	Field.prototype.fireCheck = function(location){
@@ -82,24 +80,14 @@ function Game(){
 					this.sunkShips+=1;
 					controller.userDamagedShips.delete(ship)
 					this.isSunkCurentShip = true;
-					/*if(this.ships.indexOf(ship) === this.ships.indexOf(this.curentShip)|| this.curentShip===""){
-						this.isSunkCurentShip = true;
-					}
-					else{
-						this.isSunkAnotherShip = true;
-					}*/
+					
 					view.updateUserInfo(`SUNK SHIPS: ${model.userField.sunkShips}`);
 					view.updateComputerInfo(`SUNK SHIPS: ${model.computerField.sunkShips}`);
-				}/*else{
-					this.isSunkCurentShip = false;
-					this.isSunkAnotherShip = false;
-				}*/
+				}
 				return true;
 			}
 		}
 
-		/*this.isSunkCurentShip = false;
-		this.isSunkAnotherShip = false;*/
 		this.isSunkCurentShip = false;
 		return false;
 	}
@@ -228,7 +216,7 @@ function Game(){
 		return shipDirection;
 	}
 
-
+	// Object contains the logic of the game and dont't connected with the object view.
 	let model = {
 		userField: new Field(7,6, [{location:[""], hits:[""]},
 								   {location:[""], hits:[""]},
@@ -304,6 +292,9 @@ function Game(){
 		var col = Math.floor(Math.random()*model.userField.fieldSize);
 		return row.toString() + col.toString();
 	}
+
+
+	// This object provides the connection between the objects view and model and holds some information about curent guess of computer or player
 
 	let controller = {
 		guesses: 0,
@@ -399,11 +390,7 @@ function Game(){
 					guess = (Number(guess)+1).toStr();
 					
 				}
-				/*for( let curentShip of model.userField.ships){
-					if (curentShip.location.indexOf(locs[0])>=0) {
-						model.userField.curentShip = curentShip;
-					}
-				}*/
+				
 				
 				this.compPrevHittedDirection.add(dir);
 
@@ -495,12 +482,8 @@ function Game(){
 					
 					this.compPrevHittedDirection = new Set();
 					this.compBackForward = [];
-					//model.userField.curentShip = "";
 				}
-				/*if(model.userField.isSunkAnotherShip){
-					view.updateMessage("Computer sank one of your battleships'!!!");
-					
-				}*/
+				
 				if (model.userField.sunkShips == model.userField.shipsCount) {
 					view.updateMessage("Computer sank all your battleships , in " + this.guesses + "guesses");
 					model.userField.win_loose= "loose";
@@ -567,8 +550,8 @@ function Game(){
 	
 
 	function init(){
-		//model.startGame();
-		model.userField.ships[0].location[0]="25";
+		model.startGame();
+		/*model.userField.ships[0].location[0]="25";
 		model.userField.ships[1].location[0]="45";
 		model.userField.ships[2].location[0]="56";
 		model.userField.ships[3].location[0]="34";
@@ -577,7 +560,7 @@ function Game(){
 		model.userField.ships[4].location[1]="16";
 		model.userField.ships[5].location[0]="04";
 		model.userField.ships[5].location[1]="05";
-		model.userField.ships[5].location[2]="06";
+		model.userField.ships[5].location[2]="06";*/ // for testing
 		view.displayStartLocations();
 		var fireButton = document.getElementById("fireButton");
 		fireButton.onclick = handleFireButton;
@@ -586,10 +569,10 @@ function Game(){
 	}
 
 	init();
-	console.log(model);
-	console.log(controller);
+	//console.log(model);
+	//console.log(controller);
 
-	/*model.userField.ships[0].location[0]="05";
+	/*model.userField.ships[0].location[0]="05";// for testing
 	model.userField.ships[1].location[0]="53";
 	model.userField.ships[2].location[0]="64";
 	model.userField.ships[3].location[0]="13";
