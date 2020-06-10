@@ -1,4 +1,23 @@
 function Game(){
+
+	/*Adding a method in the prototype of the object Number*/
+	Number.prototype.toStr =function(){
+		let str = String(this.valueOf());
+		if(str.length===1){
+			str = "0" + str;
+		}
+		return str;
+	}
+
+	/*Adding a method in the prototype of the object Set*/
+	Set.prototype.last = function(){
+		let last;
+		for(let i of this){
+			last = i;
+		}
+		return last;
+	}
+
 	let view = {
 		//Metod gets a string message and shows it in 
 		//message arrea.
@@ -45,6 +64,8 @@ function Game(){
 		this.shipLength = shipLength;
 		this.isSunkCurentShip = false;
 		this.win_loose = "loose";
+		//this.curentShip ="";
+		//this.isSunkAnotherShip=false;
 	}
 
 	Field.prototype.fireCheck = function(location){
@@ -52,17 +73,33 @@ function Game(){
 			if (ship.location.indexOf(location)<0) {
 				continue;
 			} else {
+				if(controller.turn === 1){
+					controller.userDamagedShips.add(ship);
+				}
 				let index = ship.location.indexOf(location);
 				ship.hits[index] = "hit";
 				if(this.isSunk(ship)){
 					this.sunkShips+=1;
+					controller.userDamagedShips.delete(ship)
 					this.isSunkCurentShip = true;
+					/*if(this.ships.indexOf(ship) === this.ships.indexOf(this.curentShip)|| this.curentShip===""){
+						this.isSunkCurentShip = true;
+					}
+					else{
+						this.isSunkAnotherShip = true;
+					}*/
 					view.updateUserInfo(`SUNK SHIPS: ${model.userField.sunkShips}`);
 					view.updateComputerInfo(`SUNK SHIPS: ${model.computerField.sunkShips}`);
-				}
+				}/*else{
+					this.isSunkCurentShip = false;
+					this.isSunkAnotherShip = false;
+				}*/
 				return true;
 			}
 		}
+
+		/*this.isSunkCurentShip = false;
+		this.isSunkAnotherShip = false;*/
 		this.isSunkCurentShip = false;
 		return false;
 	}
@@ -198,7 +235,7 @@ function Game(){
 								   {location:[""], hits:[""]},
 								   {location:["",""], hits:["",""]},
 								   {location:["",""], hits:["",""]},
-								   {location:["","",""], hits:["","",""]},
+								   {location:["","",""], hits:["","",""], direction:undefined},
 								  ], 0 , { small:1,
 										   medium:2,
 										   big:3,}),
@@ -271,20 +308,199 @@ function Game(){
 	let controller = {
 		guesses: 0,
 		computerGuessedLocs: [],
+		compPrevHittedDirection: new Set(),
+		compBackForward:[],
+		userDamagedShips:new Set(),
 		userGuessedLocs: [],
-		computerGuess: function(){
-			var guess = randomLocation();
-			while(controller.computerGuessedLocs.indexOf(guess)>=0){
-				guess = randomLocation();
+		turn:0,
+		directionLTBR:function(){
+			let random;
+			let dir = model.computerField.direction();
+			let side;
+			if(dir === "horizontal"){
+				random = Math.floor(Math.random()*2)
+				if(random === 0){
+					side = "horizontall"
+				}else{
+					side = "horizontalr"
+				}
+				
+			}else if(dir === "vertical"){
+				random = Math.floor(Math.random()*2)
+				if(random === 0){
+					side = "verticalt"
+				}else{
+					side = "verticalb"
+				}
+				
 			}
+			return side;
+		},
+		computerGuess: function(){
+			let guess;
+			let dir;
+			let locs;
+			
+
+			if(this.userDamagedShips.last() === undefined){
+				locs = this.userDamagedShips.last();
+			} else {
+				locs = this.userDamagedShips.last().hits;
+				locs = locs.map(function(item,index) {
+							if(item === "hit")
+							return index;
+							});
+				locs = locs.filter(item => item !== undefined);
+				for(let i=0; i<locs.length;i++){
+					locs[i]=this.userDamagedShips.last().location[locs[i]];
+				}	
+			}
+			if(typeof(this.userDamagedShips.last())==="undefined"){
+				
+				guess = randomLocation();
+				while(controller.computerGuessedLocs.indexOf(guess)>=0){
+				guess = randomLocation();
+				}
+			}else if(locs.length ===1){
+				
+				if(this.computerGuessedLocs.indexOf((Number(locs[0])-1).toStr())>=0){
+					this.compPrevHittedDirection.add("horizontall");
+				}
+				if(this.computerGuessedLocs.indexOf((Number(locs[0])+1).toStr())>=0){
+					this.compPrevHittedDirection.add("horizontalr");
+				}
+				if(this.computerGuessedLocs.indexOf((Number(locs[0])-10).toStr())>=0){
+					this.compPrevHittedDirection.add("verticalt");
+				}
+				if(this.computerGuessedLocs.indexOf((Number(locs[0])+10).toStr())>=0){
+					this.compPrevHittedDirection.add("verticalb");
+				}
+
+				do{
+					dir = this.directionLTBR()
+				}while(this.compPrevHittedDirection.has(dir)||(dir === "verticalt" && locs[0]<10)||(dir === "verticalb" && locs[0]>=60)||
+					(dir === "horizontall" && locs[0][1]<1)|| (dir === "horizontalr" && locs[0][1]>=6))
+
+				
+				if(dir === "verticalt" && locs[0]>=10){
+					guess =locs[0];
+					guess = (Number(guess)-10).toStr();
+					
+				}else if (dir === "verticalb" && locs[0]<60) {
+					guess =locs[0];
+					guess = (Number(guess)+10).toStr();
+					
+				}else if(dir === "horizontall" &&locs[0][1]>=1){
+					guess =locs[0];
+					guess = (Number(guess)-1).toStr();
+					
+				}else if(dir === "horizontalr" && locs[0][1]<6){
+					guess =locs[0];
+					guess = (Number(guess)+1).toStr();
+					
+				}
+				/*for( let curentShip of model.userField.ships){
+					if (curentShip.location.indexOf(locs[0])>=0) {
+						model.userField.curentShip = curentShip;
+					}
+				}*/
+				
+				this.compPrevHittedDirection.add(dir);
+
+			}else if(locs.length ===2){
+				let dirGlobal = model.userField.ships[5].direction;
+				let random;
+				if (dirGlobal==="horizontal") {
+					
+					if(this.computerGuessedLocs.indexOf((Number(locs[1])+1).toStr())>=0){
+						this.compBackForward.push(1);
+					}else if(this.computerGuessedLocs.indexOf((Number(locs[0])-1).toStr())>=0){
+						this.compBackForward.push(0);
+					}	
+
+					
+					
+				}else if (dirGlobal==="vertical") {
+					
+					if(this.computerGuessedLocs.indexOf((Number(locs[1])+10).toStr())>=0){
+						this.compBackForward.push(1);
+					}else if(this.computerGuessedLocs.indexOf((Number(locs[0])-10).toStr())>=0){
+						this.compBackForward.push(0);
+					}	
+					
+				}
+
+				do{
+					random = Math.floor(Math.random()*2)
+				}while(this.compBackForward.indexOf(random)>=0)
+
+				if(dirGlobal === "vertical" && random === 0 ){
+					if(locs[0]>=10 ){
+						guess = locs[0];
+						guess = (Number(guess)-10).toStr();
+					}else if(locs[0]<10 ){
+						guess = locs[1];
+						guess = (Number(guess)+10).toStr();
+					
+					}
+				}else if(dirGlobal === "vertical" && random === 1){
+					if(locs[1]<60 ){
+						guess = locs[1];
+						guess = (Number(guess)+10).toStr();
+					}else if(locs[1]>=60 ){
+						guess = locs[0];
+						guess = (Number(guess)-10).toStr();
+					}
+
+				}else if(dirGlobal === "horizontal" && random === 0){
+					if(locs[0][1]>=1){
+						guess = locs[0];
+						guess = (Number(guess)-1).toStr();
+					}else if(locs[0][1]<1 ){
+						guess = locs[1];
+						guess = (Number(guess)+1).toStr();
+					
+					}
+
+				}else if(dirGlobal === "horizontal" && random === 1 ){
+					if(locs[1][1]<6){
+						guess = locs[1];
+						guess = (Number(guess)+1).toStr();
+					}else if(locs[1][1]>=6 ){
+						guess = locs[0];
+						guess = (Number(guess)-1).toStr();
+					}
+
+				}
+				this.compBackForward.push(random);
+
+			}
+			
 			controller.computerGuessedLocs.push(guess);
 			var computerHit = model.userField.fireCheck(guess);
 			if (computerHit){
 				view.displayHit("u"+ guess);
 				view.updateMessage("Computer Hit!!!");
+				
+				if (this.userDamagedShips.last()!=undefined){
+					if(this.userDamagedShips.last().hits.filter(item => item !== "").length === 2){
+						model.userField.ships[5].direction = dir.slice(0,dir.length-1);
+					}
+				}
+				
+				
+				
 				if(model.userField.isSunkCurentShip){
 					view.updateMessage("Computer sank one of your battleships'!!!");
+					
+					this.compPrevHittedDirection = new Set();
+					this.compBackForward = [];
+					//model.userField.curentShip = "";
 				}
+				/*if(model.userField.isSunkAnotherShip){
+					view.updateMessage("Computer sank one of your battleships'!!!");
+					
+				}*/
 				if (model.userField.sunkShips == model.userField.shipsCount) {
 					view.updateMessage("Computer sank all your battleships , in " + this.guesses + "guesses");
 					model.userField.win_loose= "loose";
@@ -299,6 +515,7 @@ function Game(){
 		},
 		processGuess:  function(guess){
 			var location = parseGuess(guess);
+			this.turn =0;
 			if (location) {
 				this.guesses++;
 				var hit = model.computerField.fireCheck(location);
@@ -319,7 +536,9 @@ function Game(){
 					view.displayMiss(location);
 					view.updateMessage("You Missed!!!");
 				}
-				setTimeout(this.computerGuess, 2000);
+				this.turn=1;
+				setTimeout(this.computerGuess.bind(controller), 1000);
+				
 			}
 			return false;
 		},
@@ -348,7 +567,17 @@ function Game(){
 	
 
 	function init(){
-		model.startGame();
+		//model.startGame();
+		model.userField.ships[0].location[0]="25";
+		model.userField.ships[1].location[0]="45";
+		model.userField.ships[2].location[0]="56";
+		model.userField.ships[3].location[0]="34";
+		model.userField.ships[3].location[1]="35";
+		model.userField.ships[4].location[0]="15";
+		model.userField.ships[4].location[1]="16";
+		model.userField.ships[5].location[0]="04";
+		model.userField.ships[5].location[1]="05";
+		model.userField.ships[5].location[2]="06";
 		view.displayStartLocations();
 		var fireButton = document.getElementById("fireButton");
 		fireButton.onclick = handleFireButton;
@@ -357,8 +586,41 @@ function Game(){
 	}
 
 	init();
-	//console.log(model);
-	//console.log(controller);
+	console.log(model);
+	console.log(controller);
+
+	/*model.userField.ships[0].location[0]="05";
+	model.userField.ships[1].location[0]="53";
+	model.userField.ships[2].location[0]="64";
+	model.userField.ships[3].location[0]="13";
+	model.userField.ships[3].location[1]="14";
+	model.userField.ships[4].location[0]="22";
+	model.userField.ships[4].location[1]="32";
+	model.userField.ships[5].location[0]="33";
+	model.userField.ships[5].location[1]="34";
+	model.userField.ships[5].location[2]="35";
+
+	controller.computerGuess("30");
+	controller.computerGuess("61");
+	controller.computerGuess("20");
+	controller.computerGuess("24");
+	controller.computerGuess("54");
+	controller.computerGuess("04");
+	controller.computerGuess("50");
+	controller.computerGuess("11");
+	controller.computerGuess("55");
+	controller.computerGuess("22");
+	controller.computerGuess("23");
+	controller.computerGuess("05");
+	//controller.computerGuess("42");
+	//controller.computerGuess("06");
+	//controller.computerGuess("26");
+	//controller.computerGuess("15");
+	//controller.computerGuess("26");
+	//controller.computerGuess("06");
+	//controller.computerGuess("26");
+	//controller.computerGuess("15");
+	//controller.computerGuess("33");*/
 	
 }
 
