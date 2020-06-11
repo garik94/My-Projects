@@ -1,0 +1,72 @@
+.gallery{
+	width: 100%;
+	max-width: 500px;
+	height: 380px;
+	margin: 10px auto;
+	padding: 20px;
+	border: 1px solid #cccccc;
+}
+
+.big{
+	background-image: url(img/load.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 100%;
+	height: 70%;
+	overflow: hidden;
+}
+
+.big img{
+	width: 100%;
+   /* height: 100%;
+    object-fit: cover;*/
+}
+
+.small{
+	width: 100%;
+	height: 15%;
+	display: flex;
+	box-sizing: border-box;
+	justify-content: center;
+	margin-top: 15px;
+	overflow: hidden;
+}
+
+.small>div{
+	flex:0.2;
+	max-height: 100%;
+	transition: 0.5s;
+	/*border:3px dashed red;*/
+}
+
+.small>div+div{
+	margin-left:5px; 
+}
+
+.small img{
+	width: 100%;
+   /* height: 100%;
+    object-fit: cover;*/
+}
+
+.small>div:hover{
+	border:3px solid grey;
+	opacity: 0.5;
+
+}
+
+.button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+	width: 50px;
+	border:2px solid black;
+	border-radius: 50%;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.button:hover{
+	cursor: pointer;
+}
