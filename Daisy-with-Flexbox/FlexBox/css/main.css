@@ -1,0 +1,99 @@
+body {
+  /*Тело сайта*/
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0;
+}
+body header {
+  /*Хэдер*/
+  background: url('../img/background.png') no-repeat;
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+  width: 100%;
+  max-width: 1260px;
+  justify-content: space-around;
+}
+body header nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+body header nav > a {
+  color: #fff;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+}
+body header nav > a img {
+  padding-right: 15px;
+  vertical-align: middle;
+}
+body header nav .logo:hover img {
+  opacity: 0.7;
+}
+body header nav menu {
+  list-style: none;
+  text-transform: uppercase;
+  display: flex;
+}
+body header nav menu li {
+  padding-left: 15px;
+}
+body header nav menu li a {
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+}
+body header nav menu li a:hover {
+  color: #fc635e;
+  border-bottom: #fc635e 3px solid;
+  padding-bottom: 3px;
+}
+body header .mainText {
+  /*Центральный блок*/
+  text-align: center;
+}
+body header .mainText h1 {
+  text-transform: uppercase;
+  font-size: 50px;
+  color: #fff;
+}
+body header .mainText h1 span {
+  color: #db5854;
+}
+body header .mainText p {
+  color: #fff;
+  font-size: 22px;
+}
+body header .mainText a {
+  color: #db5854;
+  text-decoration: none;
+  font-size: 22px;
+  border: 2px solid #db5854;
+  padding: 12px 28px;
+  border-radius: 8px;
+}
+body header .mainText a:hover.Iwant {
+  background: #db5854;
+  color: #fff;
+}
+body header .botHeader {
+  /*Ссылка со стрелкой*/
+  display: flex;
+  justify-content: center;
+}
+body header .botHeader a {
+  font-size: 30px;
+  text-decoration: none;
+  color: #fff;
+  background: #db5854;
+  border-radius: 50%;
+  display: flex;
+  width: 45px;
+  height: 45px;
+  justify-content: center;
+}
+body header .botHeader a:hover {
+  opacity: 0.7;
+}
