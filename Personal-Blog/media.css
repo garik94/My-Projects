@@ -1,0 +1,22 @@
+@media screen and (max-width: 760px){
+	.social-media{
+		position: absolute;
+	right: 0;
+	top: 66px;
+	flex-direction: column;
+	z-index: 1;
+	border: none;
+	}
+
+	.form_home_page {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.form_home_page>* {
+		margin-bottom: 1.3em;
+		min-height: 40px;
+	}
+}
+
