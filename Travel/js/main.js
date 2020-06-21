@@ -8,10 +8,13 @@ $(document).ready(function(){
 	});
 
 	$(".request").click(function(){
-		$(".travel_is_beautiful .form").animate({top: "0px"},1000)
+		$(".travel_is_beautiful .form").slideToggle(500);
+		$("section,footer").css("display","none");
+
 	});
 
 	$(".travel_is_beautiful form .close_icon").click(function(){
-		$(".travel_is_beautiful .form").animate({top: "-100%"},1000)
+		$(".travel_is_beautiful .form").slideToggle(500);
+		$("section,footer").css("display","block");
 	})
 });

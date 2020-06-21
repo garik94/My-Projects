@@ -56,12 +56,15 @@
 		width: 100%;
 		background-color: rgba(0,0,0,0.5);
 		height: 100%;
-		position: fixed;
+		max-height: 700px;
+		position: absolute;
 		z-index: 5;
-		top: -100%;
+		top: 0;
 		left: 0;
 		box-sizing: border-box;
+		display: none;
 	}
+
 
 	.travel_is_beautiful .form form{
 		max-width: 350px;
@@ -150,6 +153,10 @@
 		display: block;
 	}
 
+	.travel_is_beautiful{
+		position: unset;
+	}
+
 	.travel_is_beautiful>div.text{
 		width: 100%;
 		padding-bottom: 20px;
@@ -174,12 +181,15 @@
 		width: 100%;
 		background-color: rgba(0,0,0,0.5);
 		height: 100%;
-		position: fixed;
+		max-height: 700px;
+		position: absolute;
 		z-index: 5;
-		top: -100%;
+		top: 0;
 		left: 0;
 		box-sizing: border-box;
+		display: none;
 	}
+
 
 	.travel_is_beautiful .form form{
 		max-width: 350px;
