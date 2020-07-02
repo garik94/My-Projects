@@ -1,0 +1,503 @@
+
+body{
+	width: 100%;
+	max-width: 1024px;
+	position: relative;
+    margin: 0 auto;
+}
+
+button{
+	cursor: pointer;
+}
+
+
+.table{
+	background-image: url(../img/table1.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	position: relative;
+	max-width: 800px;
+	width: 100%;
+	height: 600px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	margin: auto;
+}
+
+.start_page{
+	position: absolute;
+	top:0; left: 0; right: 0; bottom: 0;
+	background-color: rgba(0,0,0,0.8);
+	z-index: 2;
+	
+}
+
+.start_page button.play{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	font-size: 50px;
+	padding: 5px 20px;
+	border-radius: 10px;
+	cursor: pointer;
+	background-color: green;
+	opacity: 0.7;
+	transition: all 1s;
+}
+
+.start_page button.play:hover{
+	opacity: 1;
+	color: white;
+}
+
+.game_start{
+	position: absolute;
+	top:0; left: 0; right: 0; bottom: 0;
+	background-color: rgba(0,0,0,0.4);
+	min-width: unset;
+	max-width: unset;
+	z-index: 2;
+	display: none;
+}
+
+.game_start button#start{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	font-size: 50px;
+	padding: 5px 20px;
+	border-radius: 10px;
+	cursor: pointer;
+	background-color: green;
+	opacity: 0.7;
+	transition: all 1s;
+}
+
+.game_start button#start:hover{
+	opacity: 1;
+	color: white;
+}
+
+.game_start h3{
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	color: white;
+	font-size: 30px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+
+.table>div.count_names{
+	position: absolute;
+	top:0; left: 0; right: 0; bottom: 0;
+	background-color: rgba(0,0,0,0.8);
+	z-index: 1;
+	min-width: auto;
+	max-width: none;
+	display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.count_names form{
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+	height: 100%;
+}
+
+.count_names form>div{
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+}
+
+
+.count_names form .count{
+	display: flex;
+	justify-content: space-around;
+}
+
+.count_names form .count>div{
+	display: flex;
+	flex-direction: column;
+}
+
+.count_names form label{
+	text-align: center;
+	color: white;
+	font-size: 25px;
+	padding: 5px 10px;
+}
+
+.count_names form input{
+	padding: 15px;
+	margin-bottom: 15px;
+}
+
+.count_names form h4{
+	color: white;
+	font-size: 25px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	background-color: green;
+}
+
+.count_names form button.confirm{
+	font-size: 25px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: green;
+	font-weight: bold;
+	transition: all 1s;
+}
+
+.count_names form button.confirm:hover{
+	opacity: 1;
+	color: white;
+}
+
+.count_names form button.confirm:disabled{
+	opacity: 0.7;
+}
+
+.count_names form button.confirm:disabled:hover{
+	color: rgba(0,0,0,0.5);
+}
+
+
+
+.table .part_1{
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	order: 1;
+}
+
+.table .part_2{
+	flex: 0.8;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	order: 2;
+}
+
+.table .part_3{
+	flex: 1.4;
+	display: flex;
+	justify-content: space-around;
+	padding: 0 65px;
+	order: 3;
+}
+
+.table .part_4{
+	flex: 0.6;
+	display: flex;
+	order: 4;
+}
+
+
+
+
+.table .player{
+	display: flex;
+    flex-direction: column;
+    min-width: 70px;
+	max-width: 300px;
+}
+
+.table .player h5{
+	background: orange;
+	font-size: 20px;
+	padding: 5px;
+	margin: 2px 0;
+	text-align: center;
+}
+
+.first{
+    justify-content: flex-end;
+    order: 2;
+}
+
+.second{
+	margin-top: 20px;
+	order: 3;	
+}
+
+.third{
+	margin-top: 20px;
+	order: 1
+}
+
+
+
+.hand {
+	display: flex;
+	position: relative;
+	height: 100px;
+}
+
+.totalBlock{
+	--total: "";
+}
+
+.totalBlock::after {
+	content: var(--total);
+	font-size: 25px;
+	background-color: orange;
+	height: max-content;
+	padding: 5px;
+	vertical-align: top;
+	position: absolute;
+}
+
+
+.hand> div {
+	width: 70px;
+	height: 100px;
+	position: absolute;
+	
+}
+
+.card{
+	width:100%;
+	height: 100%;
+}
+
+.message{
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	border: 3px solid orange;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,0.7);
+    padding: 0 15px;
+    display: none;
+}
+
+.message h3{
+	color: white;
+	font-size: 30px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.message_game_over{
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	background-color: blue;
+	display: none;
+}
+
+.message_game_over h3{
+	color: white;
+	font-size: 30px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.yes_no_question{
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0 0 30px 30px;
+    padding: 0 15px;
+    border: 3px solid orange;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    display: none;
+    background-color: rgba(0,0,0,0.5);
+    max-width: 290px;
+}
+
+.yes_no_question h4{
+	text-align: center;
+	color: white;
+	font-size: 20px
+}
+
+.yes_no_question button{
+	padding: 5px 15px;
+	margin: 5px 15px;
+	background-color: green;
+	color: white;
+	border: none;
+	border-radius: 5px;
+}
+
+.yes_no_again{
+	position: absolute;
+	left: 50%; top: 50%;
+	transform: translate(-50%,-50%);
+	padding: 50px;
+	text-align: center;
+	display: none;
+	z-index: 2;
+	border: 3px solid orange;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.yes_no_again h4{
+	text-align: center;
+	color: white;
+	font-size: 25px
+}
+
+.yes_no_again button{
+	padding: 5px 15px;
+	margin: 5px 15px;
+	background-color: green;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 25px;
+}
+
+
+@media screen and (max-width: 800px){
+	.table{
+		background-image: url(../img/table-mobile.jpg);
+		width: 500px;
+		/*width: 100%;*/
+		height: 380px;
+	}
+
+	.table .part_2{
+	
+		padding: 0 10px;
+	}
+
+	.table .part_3{
+		padding: 0 35px;
+	}
+	
+	.table .player{
+	    min-width: 35px;
+		max-width: 150px;
+	}
+
+	.table .player h5{
+		font-size: 13px;
+		padding: 2.5px;
+		margin: 1px 0;
+	}
+
+	.second{
+		margin-top: 10px;	
+	}
+
+	.third{
+		margin-top: 10px;
+	}
+
+	.hand {
+		height: 70px;
+	}
+
+	.totalBlock{
+		--total: "";
+	}
+
+	.totalBlock::after {
+		font-size: 14px;
+		padding: 2.5px;
+	}
+
+	.hand> div {
+		width: 50px;
+		height: 70px;
+		
+	}
+
+	.yes_no_question{
+
+	    margin: 0 0 15px 10px;
+	    padding: 0 8px;
+	    border: 1px solid orange;
+	    border-radius: 10px;
+        max-width: 190px;
+    	max-height: 95px;
+	}
+
+	.yes_no_question h4 {
+	    font-size: 14px;
+	    margin: 5px 0;
+	}
+
+	.yes_no_question button {
+	    padding: 2px 10px;
+	    margin: 0px 10px 5px;
+	}
+
+	.message{
+		border: 1px solid orange;
+	    padding: 0 10px;
+	}
+
+	.message h3{
+		font-size: 17px;
+	}
+
+	.yes_no_again{
+		padding: 25px;
+		border: 3px solid orange;
+	    border-radius: 10px;
+	    background-color: rgba(0,0,0,0.8);
+	}
+
+	.yes_no_again h4{
+		text-align: center;
+		color: white;
+		font-size: 15px
+	}
+
+	.yes_no_again button{
+		font-size: 15px;
+	}
+
+	.count_names form label {
+	    font-size: 15px; 
+	}
+
+	.count_names form input {
+	    padding: 7px;
+	}
+
+	.count_names form h4 {
+	    font-size: 20px;
+	    padding: 5px 10px;
+	    border-radius: 5px;
+	    margin: 15px;
+	}
+
+	.count_names form button.confirm {
+	    font-size: 20px;
+	}
+
+
+
+	.count_names form>div {
+		border-right: 3px solid orange;
+	}
+}
+
+
+
+

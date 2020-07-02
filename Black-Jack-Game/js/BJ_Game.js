@@ -45,7 +45,7 @@ class BJ_Game{
 	}
 
 	play(){
-		// 2 cards dealt to everyone
+		// 2 cards dealed to everyone
 		this.deck.deal(this.players, 2);
 		this.deck.deal([this.dealer], 2);
 		// the first card of the dealer flips

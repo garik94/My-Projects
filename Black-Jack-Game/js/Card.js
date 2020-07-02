@@ -6,8 +6,8 @@
 
 class Card{
 
-	static RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "D", "K"];
-	static SUITS = ["c", "d", "h", "s"];
+	static RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+	static SUITS = ["C", "D", "H", "S"];
 
 	constructor(rank,suit,face_up=true){
 		this.rank = rank;

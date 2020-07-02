@@ -139,7 +139,7 @@ class BJ_Hand extends Hand{
 		// if either card has value null; then the method also returns null
         for (let card of this.cards) {
         	if(!card.value){
-        		return null;
+        		return "?";
         	}
         }
 
@@ -153,7 +153,7 @@ class BJ_Hand extends Hand{
         }
         
         // If player has an Ace and t <=11; we cansider that Ace has value 11
-        if (contains_Ace && t<= 11){
+        if ((contains_Ace) && t<= 11){
         	t+=10
         }
 
@@ -190,6 +190,8 @@ class BJ_Player extends BJ_Hand{
 	push(){
 		alert(this.name + " Played with computer a Draw!!!")
 	}
+
+	// the methods above are additional and they also can be removed
 }
 
 

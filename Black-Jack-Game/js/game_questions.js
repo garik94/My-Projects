@@ -17,7 +17,10 @@ function ask_yes_no(question){
 	// Asks a question with answer yes or no
 	let response;
 	while(["y","n"].indexOf(response)<0){
-		response = prompt(question).toLowerCase();
+		response = prompt(question);
+		if(response!=null){
+			response = response.toLowerCase()
+		}
 		if (["y","n"].indexOf(response)<0) {
 			alert("False answer, Please answer again Y/N")
 		}

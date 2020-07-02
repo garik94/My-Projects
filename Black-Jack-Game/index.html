@@ -3,14 +3,128 @@
 <head>
 	<title>Black Jack</title>
 	<meta charset="utf-8">
+	<meta name = "viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/main.css">
 	<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="js/game_questions.js"></script>
 	<script type="text/javascript" src="js/Card.js"></script>
 	<script type="text/javascript" src="js/Hand_and_inheritance.js"></script>
 	<script type="text/javascript" src="js/BJ_Game.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
+	
 </head>
 <body>
-
+	<div class="table">
+		<div class="start_page">
+			<button class="play">Play</button>
+		</div>
+		<div class="count_names">
+			<form>
+				<div class="numbersField">
+					<h4>How many players?</h4>
+					<div class="count">
+						<div>
+							<input id="one" name="count" type="radio" value="1">
+							<label for="one">1</label>
+						</div>
+						<div>
+							<input id="two" name="count" type="radio" value="2">
+							<label for="two">2</label>
+						</div>
+						<div>
+							<input id="three" name="count" type="radio" value="3">
+							<label for="three">3</label>
+						</div>
+						<div>
+							<input id="four" name="count" type="radio" value="4">
+							<label for="four">4</label>
+						</div>
+						<div>
+							<input id="five" name="count" type="radio" value="5">
+							<label for="five">5</label>
+						</div>
+					</div>
+				</div>
+				<div class="namesField">
+					<h4>Plesae enter player names</h4>
+					<div>
+						<label for="player1">Player-1</label>
+						<input id="player1" type="text" name="player1" placeholder="Name" disabled>
+					</div>
+					<div>
+						<label for="player2">Player-2</label>
+						<input id="player2" type="text" name="player2" placeholder="Name" disabled>
+					</div>
+					<div>
+						<label for="player3">Player-3</label>
+						<input id="player3" type="text" name="player3" placeholder="Name" disabled>
+					</div>
+					<div>
+						<label for="player4">Player-4</label>
+						<input id="player4" type="text" name="player4" placeholder="Name" disabled>
+					</div>
+					<div>
+						<label for="player5">Player-5</label>
+						<input id="player5" type="text" name="player5" placeholder="Name" disabled>
+					</div>
+					<button class="confirm" disabled>Confirm</button>
+				</div>
+			</form>
+		</div>
+		<div class="yes_no_question">
+			<h4>will you take more cards?</h4>
+			<button id ="yes">Yes</button>
+			<button id ="no">No</button>
+		</div>
+		<div class="yes_no_again">
+			<h4>Would you like to play once more?</h4>
+			<button id ="yes_again">Yes</button>
+			<button id ="no_again">No</button>
+		</div>
+		<div class="part_3 parts">
+			<div class="first player">
+				<div class="hand">	
+				</div>
+				<h5></h5>
+			</div>
+			<div class="second player">
+				<div class="hand"></div>
+				<h5></h5>
+			</div>
+			<div class="third player">
+				<div class="hand"></div>
+				<h5></h5>
+			</div>
+		</div>
+		<div class="part_2 parts">
+			<div class="fourth player">
+				<div class="hand"></div>
+				<h5></h5>
+			</div>
+			<div class="fifth player">
+				<div class="hand"></div>
+				<h5></h5>
+			</div>
+		</div>
+		<div class="part_1 parts">
+			<div class="dealer player">
+				<div class="hand"></div>
+				<h5>Dealer</h5>
+			</div>
+		</div>
+		
+		<div class="part_4 parts"></div>
+		
+		<div class="message">
+			<h3></h3>
+		</div>
+		<div class="message_game_over">
+			<h3 id="game_over"></h3>
+		</div>
+		<div class="game_start">
+			<h3></h3>
+			<button id="start">Start</button>
+		</div>
+	</div>
+	
 </body>
 </html>
