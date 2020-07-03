@@ -254,7 +254,7 @@ $(document).ready(function(){
 										            model.game.deck.populate();
 										            model.game.deck.shuffle();
 												}
-											},2000)
+											},2000);
 										},3000);
 									};
 
@@ -268,7 +268,7 @@ $(document).ready(function(){
 				},1000);
 				
 			},1000);
-		}
+		},
 	};
 
 	
