@@ -1,4 +1,4 @@
-// $(document).ready(function(){
+$(document).ready(function(){
 
 	let view = {
 		// this object is responsible for visual part of the game
@@ -407,4 +407,4 @@
 		view.updateNames(view.names);
 	});
 
-// });
+});
