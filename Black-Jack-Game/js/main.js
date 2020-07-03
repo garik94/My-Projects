@@ -293,7 +293,7 @@ $(document).ready(function(){
 		
 	});
 
-	$("#start").off().on("click",function(event){
+	$("#start").click(function(event){
 		event.preventDefault();
 		//starts the game by setting all the controller's properties to undefined
 		controller.players = undefined;
@@ -305,9 +305,10 @@ $(document).ready(function(){
 		$(".message").css("display", "block"); // opens the message window
 		view.updateMessage("Welcome to the table of Black Jack"); // Updates the messageArrea
 		view.updateNames(view.names); // Displays player names on their places on the table
+		alert("garik");
 		model.game = new BJ_Game(model.names); // Declares a new game
-		// setTimeout(function(){  after 3 seconds starts the following function
-			alert("garik");
+		setTimeout(function(){ // after 3 seconds starts the following function
+			
 			$(".message").css("display", "none");// closes the message window
 			view.updateMessage("");// Clears the message arrea
 			let deckLength; // in the end this will be needed to get the length of the deck
@@ -320,7 +321,7 @@ $(document).ready(function(){
 					view.addCard(place,card.toString());
 				}
 				view.updateTotal(place,player.total);
-			};
+			}
 			model.game.deck.deal([model.game.dealer], 2);// deals 2 cards to the dealer
 			// the first card of the dealer flips
 			model.game.dealer.flip_first_card();
@@ -330,7 +331,7 @@ $(document).ready(function(){
 				let place = "dealer";
 				view.addCard(place,card.toString());
 				view.updateTotal(place,controller.dealer.total);
-			};
+			}
 			controller.players = model.game.players;// updates the information about the players in the controller
 			controller.curentPlayerIndex = 0;// sets index, needed to get curent player
 			controller.curentPlayer = controller.players[controller.curentPlayerIndex]; // gets the current player
@@ -383,7 +384,7 @@ $(document).ready(function(){
 				};
 			});
 
-		// },3000);
+		},3000);
 
 	});
 
