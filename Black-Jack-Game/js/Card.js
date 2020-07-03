@@ -12,8 +12,10 @@ class Card{
 		this.is_face_up = face_up;
 	}
 
-	static RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-	static SUITS = ["C", "D", "H", "S"];
+	// static RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+	// static SUITS = ["C", "D", "H", "S"];
+	/*I could use here static properties, but on iphone it's doesn't work,
+	so I gave to the Cart properties directly*/
 
 	flip(){
 		this.is_face_up = !this.is_face_up;
@@ -30,6 +32,8 @@ class Card{
 	}
 }
 
+Card.RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+Card.SUITS = ["C", "D", "H", "S"];
 
 /*********************************************************************
 *****************Class BJ_Card -inherited from class Card ************
@@ -46,7 +50,9 @@ class BJ_Card extends Card{
 		super(rank,suit,face_up=true);
 	}
 
-	static ACE_VALUE = 1
+	// static ACE_VALUE = 1
+	/*I could use here static properties, but on iphone it's doesn't work,
+	so I gave to the BJ_Card properties directly*/
 
 	get value(){
 		let val;
@@ -62,3 +68,5 @@ class BJ_Card extends Card{
 		return val;
 	}
 }
+
+BJ_Card.ACE_VALUE =1
