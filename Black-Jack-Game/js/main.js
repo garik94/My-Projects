@@ -383,7 +383,7 @@ $(document).ready(function(){
 				};
 			});
 
-		},3000);
+		// },3000);
 
 	});
 
@@ -405,6 +405,6 @@ $(document).ready(function(){
 		view.names = [];
 		model.names = [];
 		view.updateNames(view.names);
-	// });
+	});
 
 });
