@@ -305,7 +305,6 @@ $(document).ready(function(){
 		$(".message").css("display", "block"); // opens the message window
 		view.updateMessage("Welcome to the table of Black Jack"); // Updates the messageArrea
 		view.updateNames(view.names); // Displays player names on their places on the table
-		alert("garik");
 		model.game = new BJ_Game(model.names); // Declares a new game
 		setTimeout(function(){ // after 3 seconds starts the following function
 			
