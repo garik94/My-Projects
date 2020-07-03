@@ -6,8 +6,8 @@
 
 class Card{
 
-	static RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-	static SUITS = ["C", "D", "H", "S"];
+	// static RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+	// static SUITS = ["C", "D", "H", "S"];
 
 	constructor(rank,suit,face_up=true){
 		this.rank = rank;
@@ -41,7 +41,7 @@ class Card{
 // the rest cards has fixed values;
 
 class BJ_Card extends Card{
-	static ACE_VALUE = 1
+	// static ACE_VALUE = 1
 
 	constructor(rank,suit,face_up=true){
 		super(rank,suit,face_up=true);
